@@ -1,11 +1,12 @@
 <?php
 include('../../db_connection.php');
 
-$sql = "SELECT * FROM movies WHERE `isDisable`=1";
-$result = $conn->query($sql);
-
-while ($row = $result->fetch_assoc()) {
-   
+if(!isset($_GET['id'])){
+    header('location:index.php?tab=movie');
 }
+$id=$_GET['id'];
+$sql="UPDATE movies SET `isDisable`=0 WHERE id=$id";
+$result=$conn->query($sql);
+header("location:index.php?tab=movie");
 
 

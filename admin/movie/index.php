@@ -22,10 +22,9 @@ include('../partial/header.php');
           $result=$conn->query($sql);
 
           while($row=$result->fetch_assoc()){
-                
            ?>
               <tr>
-                <td><img src="<?php echo $row['poster'] ?>" width='100px' height='100px' alt=""></td>
+                <td><img src="<?php echo ".".$row['poster'] ?>" width='100px' height='100px' alt=""></td>
                 <td><?php echo $row['title'] ?></td>
                 <?php 
                 $movie_id=$row['id'];
@@ -53,8 +52,8 @@ include('../partial/header.php');
                 <td><?php echo $row['year'] ?></td>
                 <td><?php echo $row['created_at'] ?></td>
                 <td>
-                  <a href="edit.php?id=<?php echo $row['id'] ?>">Edit</a>
-                  <a href="delete.php?id=<?php echo $row['id'] ?>">Delete</a>
+                  <a href="edit.php?tab=movie&id=<?php echo $row['id'] ?>"><i class="fa-solid fa-pen-to-square text-warning"></i></a>
+                  <a href="delete.php?id=<?php echo $row['id'] ?>"><i class="fa-solid fa-trash text-danger"></i></a>
                 </td>
               </tr>
          <?php } 

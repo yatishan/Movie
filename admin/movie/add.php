@@ -12,14 +12,13 @@
                         if($result){
                             $title=$_POST['title'];
                             $year=$_POST['year'];
-                            $poster="../../upload/{$file['name']}";
+                            $poster="./../upload/{$file['name']}";
                             $sql="INSERT INTO movies (`title`,`year`,`poster`,`created_at`,`updated_at`) VALUE 
                             ('$title','$year','$poster',now(),now())";
                             $result=$conn->query($sql);
-                            $sql_movie="SELECT * FROM movies WHERE `title`='$title'";
-                            $result_movie=$conn->query($sql_movie);
-                            $row=$result_movie->fetch_assoc();
-                            $movie_id=$row['id'];
+                            if($result==TRUE){
+                            $movie_id= $conn->insert_id;
+                            }
                             foreach($types as $type){
                                 $sql_movie_type="INSERT INTO movie_type (`movie_id`,`type_id`) VALUE ('$movie_id','$type')";
                                 $result_movie_type=$conn->query($sql_movie_type);

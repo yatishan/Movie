@@ -23,11 +23,12 @@
     </style>
 </head>
 <body>
-    <?php 
-    session_start();
+    <?php
+    include('../db_connection.php'); 
     if(isset($_POST['yes'])){
-        session_destroy();
-        header("location:login.php");
+        $sql="UPDATE account SET `isDisable`=0";
+        $result_in=$conn->query($sql);
+        header('location:login.php');
     }
     if(isset($_POST['no'])){
         header("location:index.php");

@@ -15,10 +15,9 @@
 <?php
   $error_message = '';
   $success_message = '';
-
+  $id= $id=$_GET['id'];
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST['name'])) {
-      $id= $id=$_GET['id'];
       $name = $_POST['name'];
       // insert into db
       // $date_now = date('Y-m-d h:i:s');
@@ -36,6 +35,9 @@
       $error_message = "All fields are required!";
     }
   }
+  $sql_type="SELECT * FROM types WHERE id=$id";
+  $result_type=$conn->query($sql_type);
+  $row_type=$result_type->fetch_assoc();
 ?>
 <form method="post">
   <div class="row my-3">
@@ -57,7 +59,7 @@
     <?php } ?>
     <div class="col-6 mb-3">
       <label for="name" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name" name="name"/>
+      <input type="text" class="form-control" id="name" name="name" value="<?=$row_type['name'] ?>"/>
     </div>
     <div class="col-12">
       <button type="submit" class="btn btn-primary">

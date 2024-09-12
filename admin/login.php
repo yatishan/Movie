@@ -36,6 +36,8 @@
         if(!empty($_POST['username']) && !empty($_POST['password'])){
             $username=$_POST['username'];
             $password=$_POST['password'];
+            $sql_in="UPDATE account SET `isDisable`=1";
+            $result_in=$conn->query($sql_in);
             $sql="SELECT * FROM account WHERE `isDisable`=1";
             $result=$conn->query($sql);
             $row=$result->fetch_assoc();

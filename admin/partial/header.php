@@ -4,7 +4,7 @@ $sql="SELECT * FROM account WHERE `isDisable`=1";
 $result=$conn->query($sql);
 $row=$result->fetch_assoc();
 if(!$row){
-    header('location:index.php');
+    header('location:./../login.php');
 }
 $tab=$_GET['tab'];
 
@@ -35,7 +35,7 @@ $tab=$_GET['tab'];
         <h3><a class="<?=$tab=='type'?"active":"" ?>" style="text-decoration:none; color:black;" href="../type/index.php?tab=type"><i>Type</i></a></h4>
     </div>
     <div>
-        <button class="btn btn-primary"><a style="text-decoration:none; color:black" href="logout.php">Logout</a></button>
+        <button class="btn btn-primary"><a style="text-decoration:none; color:black" href="../logout.php">Logout</a></button>
     </div>
 </div>
 </div>

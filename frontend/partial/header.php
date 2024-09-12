@@ -13,31 +13,34 @@
             padding: 0;
         }
         body{
-            background-color: black;
-        }
+            background-color:rgba(0, 9, 33, 0.96);
+        } 
        
         .main-div{
-            width: 40%;
-            margin: 0 auto;
+            width: 100%;
             display: flex;
             justify-content: center;
-            background-color:rgba(10, 10, 13, 0.5);
-            margin-top: 30px;
-            padding: 10px 0px;
-            border: 1px solid gray;
-            border-radius: 15px;
+            background-color:rgba(32, 32, 49, 0.94);
+            padding: 25px 0px;
+            position: fixed;
+            top:0;  
+            z-index: 1;
         }
         .inner-div{
             display: flex;
             justify-content:space-evenly;
         }
-        .inner-div > div{
+        .inner-div > div >div{
             margin: 0px 10px;
         }
-        .inner-div > div >a{
+        .inner-div > div > div >a{
             text-decoration: none;
             color: white;
             font-size: 18px;
+            font-weight: bold;
+        }
+        .inner-div > div > div > a:hover{
+            color:rgba(32, 133, 49, 0.94)!important;
         }
         /* h1{
             animation: appear linear;
@@ -46,23 +49,23 @@
         .card-div{
             margin: 10px;
             display: grid;
-            grid-template-columns:24% 24% 24% 24%;
-            gap:20px;
+            grid-template-columns:24.5% 24.5% 24.5% 24.5%;
+            gap:10px;
             /* animation: appear linear;
             animation-timeline: view();
             animation-range: entry 0; */
         }
        
-        /* @keyframes appear{
+        @keyframes appear{
             from{
                 opacity: 0;
-                scale: 0.8;
+                scale: 0.9;
             }
             to{
                 opacity: 1;
                 scale: 1;
             }
-        } */
+        }
         @media (max-width:900px){
             .card-div{
             grid-template-columns:33% 33% 33%;
@@ -80,20 +83,23 @@
 <body>
     <?php 
     $tab=$_GET['tab'];
+    include('../db_connection.php');
     ?>
     <div>
         <div class="main-div">
            <div class="inner-div">
-            <div><a href="index.php?tab=home" style="color:<?php
-            echo $tab=='home'?"#C40C0C":"white";
-            ?> ;">Home</a></div>
-            <div><a href="about.php?tab=about" style="color:<?php
-            echo $tab=='about'?"#C40C0C":"white";
-            ?> ;">About</a></div>
-            <div><a href="contact.php?tab=contact" style="color:<?php
-            echo $tab=='contact'?"#C40C0C":"white";
-            ?> ;">Contact</a></div>
-            <div><a href="search.php"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+            <div style="display:flex;">
+                <div><a href="index.php?tab=home" style="color:<?php
+                echo $tab=='home'?"#059212":"white";
+                ?> ;">Home</a></div>
+                <div><a href="about.php?tab=about" style="color:<?php
+                echo $tab=='about'?"#059212":"white";
+                ?> ;">About</a></div>
+                <div><a href="contact.php?tab=contact" style="color:<?php
+                echo $tab=='contact'?"#059212":"white";
+                ?> ;">Contact</a></div>
+                <div><a href="search.php"><i class="fa-solid fa-magnifying-glass"></i></a></div>    
+            </div>
            </div>
            <!-- <input type="search" name="" id="" class="" placeholder="search..."> -->
         </div>

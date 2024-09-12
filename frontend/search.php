@@ -31,20 +31,22 @@
 </head>
 <body style="background-color: black;">
     <?php 
-    session_start();
-    $movie_list=$_SESSION['movie-list'];
+    include('../db_connection.php');
     if(isset($_GET['btn'])){
         $tmp=[];
         $search=$_GET['search'];
-        foreach($movie_list as $movie){
+        $sql="SELECT * FROM movies WHERE isDisable=1 AND `title` LIKE '%$search%'";
+        $result=$conn->query($sql);
+        // foreach($row as $movie){
 
-            if(str_contains(strtoupper($movie['title']),strtoupper($search))){
-                $tmp[]=$movie;
-            }
-        }
-        if(count($tmp)<=0){
-            $mes="No Result For You";
-        }
+        //     if(str_contains(strtoupper($movie['title']),strtoupper($search))){
+        //         $tmp[]=$movie;
+        //     }
+        // }
+        // var_dump($row=$result->fetch_assoc());
+        // if(count($tmp)<=0){
+        //     $mes="No Result For You";
+        // }
     }
     ?>
     <div class="container mt-5">
@@ -63,16 +65,16 @@
 
 echo "<div class='mt-5 card-div'>";
 
-foreach($tmp as $movie){
+while($row=$result->fetch_assoc()){
 ?>
   
   <div class="card" style="border-radius:8px;overflow:hidden; border:2px solid white;">
     <div>
-      <img style="width:100%; height:200px" src="<?php echo $movie['image'] ?>" alt="">
+      <img style="width:100%; height:200px" src="<?php echo $row['poster'] ?>" alt="">
     </div>
     <div style="background-color:white; padding:5px 5px; display:flex; justify-content:space-between;">
-      <p style="color:black; font-weight:bold;"><?php echo $movie['title'] ?></p>
-      <p style="color:black; font-size:15px;"><?php echo $movie['create_at'] ?></p>
+      <p style="color:black; font-weight:bold;"><?php echo $row['title'] ?></p>
+      <p style="color:black; font-size:15px;"><?php echo $row['created_at'] ?></p>
     </div>
     <div>
     <button class="btn btn-danger">Watch Now</button>
