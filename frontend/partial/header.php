@@ -20,7 +20,8 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            background-color:rgba(32, 32, 49, 0.94);
+            /* background-color:rgba(32, 32, 49, 0.94); */
+            background-color: #27374D;
             padding: 25px 0px;
             position: fixed;
             top:0;  
@@ -95,7 +96,7 @@
                 <div><a href="about.php?tab=about" style="color:<?php
                 echo $tab=='about'?"#059212":"white";
                 ?> ;">About</a></div>
-                <div><a href="contact.php?tab=contact" style="color:<?php
+                <div><a href="#" style="color:<?php
                 echo $tab=='contact'?"#059212":"white";
                 ?> ;">Contact</a></div>
                 <div><a href="search.php"><i class="fa-solid fa-magnifying-glass"></i></a></div>    

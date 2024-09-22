@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1><a href="./admin/">Admin Page</a></h1>
-    <h1><a href="./frontend/">Frontend Page</a></h1>
+    <h1><a href="./frontend/index.php?tab=home">Frontend Page</a></h1>
 </body>
 </html>
