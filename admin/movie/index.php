@@ -35,6 +35,7 @@ include('../partial/header.php');
                 while ($row_movie_type = $result_movie_type->fetch_assoc()){
                     $type_ids[]=$row_movie_type['type_id'];
                 }
+                // var_dump($type_ids);
                 if(!empty($type_ids)){
                     $type_ids_str = implode(",", $type_ids);
                     $sql_type="SELECT * FROM types WHERE `id` IN ($type_ids_str)";
@@ -43,12 +44,18 @@ include('../partial/header.php');
                     while ($row_type = $result_type->fetch_assoc()){
                         $type_names[]=$row_type['name'];
                     }
-                }else{
-                    echo "no type id  not found";
-                }
+                  }
+                // }else{
+                //     echo "type id  not found";
+                // }
                 
                 ?>
-                <td><?php echo implode(",",$type_names)?></td>
+                <td> 
+                 <?php 
+                 echo implode(",",$type_names)
+                 ?>
+                </td> 
+
                 <td><?php echo $row['year'] ?></td>
                 <td><?php echo $row['created_at'] ?></td>
                 <td>
